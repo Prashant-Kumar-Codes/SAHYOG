@@ -30,7 +30,6 @@ def resolve_frontend_dir() -> Path:
     candidates = [
         current_dir.parent.parent / "frontend",  # ../../frontend from backend/app
         Path.cwd() / "frontend",                 # ./frontend if run from root
-        Path.cwd().parent / "frontend",          # ../frontend if run from backend/
         Path("/app/frontend"),                   # standard Docker container path
     ]
     for candidate in candidates:
@@ -43,13 +42,10 @@ def resolve_frontend_dir() -> Path:
 FRONTEND_DIR = resolve_frontend_dir()
 
 # Mount static asset folders if they exist
-css_dir = FRONTEND_DIR / "css"
-if css_dir.is_dir():
-    app.mount("/css", StaticFiles(directory=str(css_dir)), name="css")
-
-js_dir = FRONTEND_DIR / "js"
-if js_dir.is_dir():
-    app.mount("/js", StaticFiles(directory=str(js_dir)), name="js")
+for folder in ["css", "js", "docs", "images", "assets"]:
+    dir_path = FRONTEND_DIR / folder
+    if dir_path.is_dir():
+        app.mount(f"/{folder}", StaticFiles(directory=str(dir_path)), name=folder)
 
 # Health Check & Basic API Status
 @app.get("/api/health", tags=["System"])

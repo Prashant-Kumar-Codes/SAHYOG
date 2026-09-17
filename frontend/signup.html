@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Sahyog National Innovation Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .auth-box {
+      max-width: 520px;
+      margin: 40px auto;
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-medium);
+      overflow: hidden;
+    }
+    .auth-header {
+      background: var(--navy-dark);
+      color: white;
+      padding: 24px;
+      text-align: center;
+      border-bottom: 4px solid var(--amber);
+    }
+    .auth-body {
+      padding: 24px;
+    }
+  </style>
+</head>
+<body style="background:#eef2f6;">
+
+  <div class="tricolor-strip">
+    <div class="orange"></div>
+    <div class="white"></div>
+    <div class="green"></div>
+  </div>
+
+  <div class="container">
+    <div class="auth-box">
+      <div class="auth-header">
+        <a href="index.html" style="text-decoration:none;">
+          <div class="emblem-circle" style="margin:0 auto 10px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6">
+              <circle cx="12" cy="12" r="9"/>
+              <circle cx="12" cy="12" r="2"/>
+              <path d="M12 3v6M12 15v6M3 12h6M15 12h6"/>
+            </svg>
+          </div>
+          <div class="logo-title" style="font-size:22px;">SAH<span>YOG</span></div>
+        </a>
+        <div style="font-size:12px; color:#aecde8; margin-top:4px;">National Public Innovation Onboarding Registry</div>
+      </div>
+
+      <div class="auth-body">
+        <form onsubmit="handleSignup(event)">
+          <div class="form-group">
+            <label class="form-label">Full Entity / Legal Name *</label>
+            <input type="text" class="form-input" placeholder="e.g. Bharat Drone Dynamics Pvt Ltd" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">DPIIT Recognition Certificate Number *</label>
+            <input type="text" class="form-input" placeholder="e.g. DIPP-IND-2024-XXXXX" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Corporate Identification Number (CIN) *</label>
+            <input type="text" class="form-input" placeholder="e.g. U72900DL2023PTC123456" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Official Email Address *</label>
+            <input type="email" class="form-input" placeholder="contact@bharatdrones.in" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Primary Technology Domain *</label>
+            <select class="form-select" required>
+              <option value="">Select Domain...</option>
+              <option>DeepTech &amp; Autonomous Systems</option>
+              <option>Smart Cities &amp; Water Management</option>
+              <option>HealthTech &amp; Rural Diagnostics</option>
+              <option>CleanTech &amp; Renewable Energy</option>
+              <option>Defence &amp; Aerospace</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-sm-success" style="width:100%; padding:10px; font-size:13px; margin-top:8px;">
+            Complete Verification &amp; Register »
+          </button>
+        </form>
+
+        <div style="margin-top:20px; text-align:center; font-size:11px; color:#64748b;">
+          Already registered? <a href="login.html" style="color:var(--primary); font-weight:bold;">Sign In &rarr;</a><br><br>
+          <a href="index.html" style="color:#64748b;">&larr; Back to Portal Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleSignup(e) {
+      e.preventDefault();
+      alert('Registration submitted! You will receive confirmation after DPIIT verification.');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahyog | National Public Innovation Procurement &amp; Sandbox Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Tricolor Strip -->
+  <div class="tricolor-strip">
+    <div class="orange"></div>
+    <div class="white"></div>
+    <div class="green"></div>
+  </div>
+
+  <!-- Gov Utility Top Bar -->
+  <div class="gov-topbar">
+    <div class="container gov-topbar-inner">
+      <div class="gov-brand-sub">
+        Government of India &nbsp;|&nbsp; Ministry of Commerce &amp; Industry &nbsp;|&nbsp; DPIIT
+      </div>
+      <div class="gov-controls">
+        <span>Text Size:</span>
+        <button class="font-btn" data-size="sm">A-</button>
+        <button class="font-btn" data-size="md">A</button>
+        <button class="font-btn" data-size="lg">A+</button>
+        <span style="color:#cbd5e1;">|</span>
+        <button class="lang-btn" id="lang-toggle">हिन्दी</button>
+        <span style="color:#cbd5e1;">|</span>
+        <span class="live-clock" id="live-clock">Loading IST...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header Banner -->
+  <header class="main-header">
+    <div class="container header-row">
+      <a class="logo-block" onclick="setTab('overview')">
+        <div class="emblem-circle">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6">
+            <circle cx="12" cy="12" r="9"/>
+            <circle cx="12" cy="12" r="2"/>
+            <path d="M12 3v6M12 15v6M3 12h6M15 12h6"/>
+            <path d="m5.6 5.6 4.2 4.2M14.2 14.2l4.2 4.2M5.6 18.4l4.2-4.2M14.2 9.8l4.2-4.2"/>
+          </svg>
+        </div>
+        <div>
+          <div class="logo-title">SAH<span>YOG</span></div>
+          <div class="logo-sub">
+            National Public Innovation Procurement &amp; Sandbox Portal<br>
+            <span class="logo-badge">DPIIT &amp; GeM Framework · Govt. of India</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Search Bar -->
+      <div class="search-wrapper">
+        <input type="text" id="portal-search" class="search-input" placeholder="Search pilot challenges, ministries, startups...">
+        <button class="search-btn">🔍</button>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <a href="https://gem.gov.in/" target="_blank" class="btn-gem">↗ GeM Portal</a>
+        <a href="login.html" class="btn-login">Login</a>
+        <a href="signup.html" class="btn-register">Register</a>
+        <button class="mobile-toggle" id="mobile-toggle">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Blue Sticky Navigation Bar -->
+  <nav class="nav-bar">
+    <div class="container nav-inner">
+      <div class="nav-tabs">
+        <button class="nav-tab-btn active" data-tab="overview" onclick="setTab('overview')">Home</button>
+        <button class="nav-tab-btn" data-tab="department" onclick="setTab('department')">Govt Dashboard</button>
+        <button class="nav-tab-btn" data-tab="startup" onclick="setTab('startup')">Startup Portal</button>
+        <button class="nav-tab-btn" data-tab="scaleup" onclick="setTab('scaleup')">Consortium &amp; Scale-Up</button>
+        <button class="nav-tab-btn" data-tab="challenges" onclick="setTab('challenges')">Pilot Challenges</button>
+      </div>
+
+      <!-- Persona Switcher -->
+      <div class="role-switcher">
+        <span class="role-label">View as:</span>
+        <button class="role-pill active" data-role="department" onclick="setRole('department')">🏛 Govt Officer</button>
+        <button class="role-pill" data-role="startup" onclick="setRole('startup')">🚀 DPIIT Startup</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-bar">
+    <div class="container breadcrumb-inner">
+      <div class="breadcrumb-links">
+        <a onclick="setTab('overview')" style="cursor:pointer;">Home</a>
+        <span>&rsaquo;</span>
+        <strong style="color:#1e293b;" id="crumb-active">Portal Overview</strong>
+      </div>
+      <div>
+        Framework: <strong style="color:#116530;">GFR Rule 149(viii) &amp; 161</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- News Ticker -->
+  <div class="ticker-wrap">
+    <div class="container ticker-inner">
+      <span class="ticker-badge">● LIVE</span>
+      <div class="ticker-scroll">
+        <span class="marquee-text">
+          MoHUA releases Smart Water Urban SCADA Pilot Challenge 2026 (Budget: ₹45 Lakhs)   ◆   
+          Ministry of Defence grants GFR Rule 149(viii) exemption for Autonomous Swarm Drone Sandbox   ◆   
+          Smart Escrow Milestone 2 (₹20 Lakhs) disbursed to AI Rural Diagnostic Startup via RTGS   ◆   
+          New 3-Startup Consortium registered under MOU-2026-DEF-009 for Tactical UAV Tender   ◆   
+          GeM Direct Sanction Order GOI-MOHFW-8819 issued without L1 re-tendering
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-banner">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-framework-badge">
+          DPIIT &amp; GeM National Public Innovation Sandbox Framework · GFR 149/161
+        </div>
+        <h1 class="hero-title">
+          De-risking Government Innovation Buying —<br>
+          <span>From Pilot to Procurement</span>
+        </h1>
+        <p class="hero-desc">
+          Sahyog establishes India's institutional procurement bridge connecting 1.8 Lakh+ DPIIT-recognized startups with Government Departments for zero-risk field sandbox trials, automated milestone escrow payouts, and direct pilot-to-GeM contract conversion under GFR Rule 149(viii).
+        </p>
+        <div class="hero-actions">
+          <button class="btn-hero-primary" onclick="setTab('challenges')">Browse Pilot Challenges »</button>
+          <button class="btn-hero-success" onclick="openModal('modal-new-challenge')">+ Post Dept Challenge</button>
+          <button class="btn-hero-success" onclick="openModal('modal-kyc')">✓ Verify DPIIT Auto-KYC</button>
+          <button class="btn-hero-outline" onclick="setTab('scaleup')">Consortium &amp; GeM Engine</button>
+        </div>
+      </div>
+
+      <!-- Persona Card -->
+      <div class="hero-card">
+        <div class="hero-card-header department" id="hero-persona-header">
+          🏛 Govt Officer View Active
+        </div>
+        <div class="hero-card-body" id="hero-persona-body">
+          <table class="hero-table">
+            <tr><td class="label">Authority:</td><td class="val">GFR Rule 149(viii) &amp; 161</td></tr>
+            <tr><td class="label">Blind Review:</td><td class="val">✓ Active (Zero Bias)</td></tr>
+            <tr><td class="label">VfM Cut-Off:</td><td class="val">≥ 75.0 / 100</td></tr>
+            <tr><td class="label">Escrow:</td><td class="val">Tripartite RBI Regulated</td></tr>
+          </table>
+          <div style="margin-top:10px; border-top:1px solid rgba(255,255,255,0.1); padding-top:8px;">
+            <button class="btn-sm-primary" style="width:100%;" onclick="setTab('department')">Open Department Dashboard »</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Band -->
+  <section class="stats-band">
+    <div class="container stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">1,84,290+</div>
+        <div class="stat-label">DPIIT Startups</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">342</div>
+        <div class="stat-label">Active Sandboxes</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">₹485.6 Cr</div>
+        <div class="stat-label">Escrow Protected</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">88</div>
+        <div class="stat-label">GeM Conversions</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Blind Evaluation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN TAB CONTENT CONTAINER -->
+  <main class="main-content">
+    <div class="container">
+
+      <!-- TAB 1: OVERVIEW -->
+      <div id="tab-overview" class="tab-content">
+        <!-- Quick Access -->
+        <div class="gem-section-header">
+          <span>Quick Access Modules</span>
+          <span style="font-size:11px; font-weight:normal; color:#64748b;">Direct Portal Navigation</span>
+        </div>
+        <div class="quick-grid">
+          <div class="quick-card" style="border-top: 3px solid #1a7abf;" onclick="setTab('challenges')">
+            <span class="quick-icon">📋</span>
+            <span class="quick-title">Browse Challenges</span>
+            <span class="quick-sub">Explore open govt pilots</span>
+          </div>
+          <div class="quick-card" style="border-top: 3px solid #1a5276;" onclick="setTab('department')">
+            <span class="quick-icon">🏛</span>
+            <span class="quick-title">Dept Dashboard</span>
+            <span class="quick-sub">VfM scoring &amp; approvals</span>
+          </div>
+          <div class="quick-card" style="border-top: 3px solid #116530;" onclick="setTab('startup')">
+            <span class="quick-icon">🚀</span>
+            <span class="quick-title">Startup Portal</span>
+            <span class="quick-sub">Sandbox &amp; escrow ledger</span>
+          </div>
+          <div class="quick-card" style="border-top: 3px solid #e05c00;" onclick="setTab('scaleup')">
+            <span class="quick-icon">🤝</span>
+            <span class="quick-title">Consortium Engine</span>
+            <span class="quick-sub">SME clustering under GFR 161</span>
+          </div>
+          <div class="quick-card" style="border-top: 3px solid #c0392b;" onclick="openModal('modal-sanction')">
+            <span class="quick-icon">📜</span>
+            <span class="quick-title">GeM Conversions</span>
+            <span class="quick-sub">Direct sanction orders</span>
+          </div>
+        </div>
+
+        <!-- Two Column Layout: Featured Challenges + Sidebar -->
+        <div style="display:grid; grid-template-columns: 1fr 280px; gap:16px; align-items:start;">
+          <div>
+            <div class="gem-section-header">
+              <span>Featured Open Pilot Challenges</span>
+              <button class="btn-action" onclick="setTab('challenges')">View All (5) »</button>
+            </div>
+            <div class="gem-panel">
+              <div class="gem-table-wrap">
+                <table class="gem-table">
+                  <thead>
+                    <tr>
+                      <th style="width:140px;">Code</th>
+                      <th>Title</th>
+                      <th style="width:110px;">Budget</th>
+                      <th style="width:90px;">Stage</th>
+                      <th style="width:60px;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="featured-challenges-body">
+                    <!-- Populated dynamically by JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div>
+            <div class="gem-panel">
+              <div class="gem-panel-header">Important Links</div>
+              <div class="gem-panel-body" style="padding:8px 12px; font-size:11px;">
+                <div style="border-bottom:1px dashed #e2e8f0; padding:6px 0;">
+                  <a href="https://gem.gov.in/" target="_blank" style="color:#1a7abf; text-decoration:none;">▶ GeM Portal (gem.gov.in) ↗</a>
+                </div>
+                <div style="border-bottom:1px dashed #e2e8f0; padding:6px 0;">
+                  <a href="https://startupindia.gov.in/" target="_blank" style="color:#1a7abf; text-decoration:none;">▶ DPIIT Startup India ↗</a>
+                </div>
+                <div style="border-bottom:1px dashed #e2e8f0; padding:6px 0;">
+                  <a href="https://india.gov.in/" target="_blank" style="color:#1a7abf; text-decoration:none;">▶ National Portal of India ↗</a>
+                </div>
+                <div style="border-bottom:1px dashed #e2e8f0; padding:6px 0;">
+                  <a href="https://makeinindia.com/" target="_blank" style="color:#1a7abf; text-decoration:none;">▶ Make in India ↗</a>
+                </div>
+                <div style="padding:6px 0;">
+                  <a href="https://digitalindia.gov.in/" target="_blank" style="color:#1a7abf; text-decoration:none;">▶ Digital India ↗</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="gem-panel">
+              <div class="gem-panel-header">● Gazette / Notifications</div>
+              <div class="gem-panel-body" style="padding:8px 12px; font-size:11px; line-height:1.5;">
+                <div style="border-bottom:1px dashed #e2e8f0; padding:6px 0;">
+                  <span style="color:#c0392b; font-weight:bold;">►</span> MoHUA Pilot Challenge 2026 open for applications.
+                </div>
+                <div style="border-bottom:1px dashed #e2e8f0; padding:6px 0;">
+                  <span style="color:#c0392b; font-weight:bold;">►</span> Escrow Tranche 2 released for AquaPulse Sandbox.
+                </div>
+                <div style="border-bottom:1px dashed #e2e8f0; padding:6px 0;">
+                  <span style="color:#c0392b; font-weight:bold;">►</span> New Consortium registered under MoD-009.
+                </div>
+                <div style="padding:6px 0;">
+                  <span style="color:#c0392b; font-weight:bold;">►</span> GeM Sanction Order GOI-MOHFW-8819 issued.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: GOVT DASHBOARD -->
+      <div id="tab-department" class="tab-content" style="display:none;">
+        <div class="gem-section-header">
+          <span>🏛 Government Procurement Officer Dashboard</span>
+          <button class="btn-sm-success" onclick="openModal('modal-new-challenge')">+ Post New Department Challenge</button>
+        </div>
+
+        <div class="gem-panel" style="background:#eff6ff; border-color:#bfdbfe; margin-bottom:16px;">
+          <div class="gem-panel-body" style="font-size:12px; color:#1e40af;">
+            <strong>Statutory Rule 149(viii) Clearance:</strong> Startups are evaluated under Double-Blind Anonymization. Company names, directors, and logos are masked to prevent procurement bias. Qualifying score ≥ 75/100 grants automatic exemption from Earnest Money Deposit (EMD).
+          </div>
+        </div>
+
+        <div class="gem-panel">
+          <div class="gem-panel-header">
+            <span>Blind Evaluation Queue — Proposals for Pilot Approval</span>
+            <span style="font-size:11px; font-weight:normal;">GFR Rule 149(viii) Pipeline</span>
+          </div>
+          <div class="gem-table-wrap">
+            <table class="gem-table">
+              <thead>
+                <tr>
+                  <th>Anonymized Code</th>
+                  <th>Challenge Code</th>
+                  <th>Core Technology</th>
+                  <th>VfM Score</th>
+                  <th>Shell Risk</th>
+                  <th>Stage</th>
+                  <th>Statutory Action</th>
+                </tr>
+              </thead>
+              <tbody id="proposals-table-body">
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: STARTUP PORTAL -->
+      <div id="tab-startup" class="tab-content" style="display:none;">
+        <div class="gem-section-header">
+          <span>🚀 DPIIT Startup Innovation Sandbox Console</span>
+          <button class="btn-sm-primary" onclick="openModal('modal-kyc')">✓ Run DPIIT Auto-KYC Check</button>
+        </div>
+
+        <div class="gem-panel">
+          <div class="gem-panel-header">Active Sandbox: AquaPulse Sensing Technologies (SAHYOG-MOHUA-SBX-2026-081)</div>
+          <div class="gem-panel-body">
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin-bottom:16px;">
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:12px; border-radius:4px;">
+                <div style="font-size:11px; color:#64748b;">Escrow Protected Budget</div>
+                <div style="font-size:18px; font-weight:bold; color:#116530; font-family:monospace;">₹45,00,000</div>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:12px; border-radius:4px;">
+                <div style="font-size:11px; color:#64748b;">Disbursed via RTGS</div>
+                <div style="font-size:18px; font-weight:bold; color:#1a7abf; font-family:monospace;">₹15,00,000</div>
+              </div>
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:12px; border-radius:4px;">
+                <div style="font-size:11px; color:#64748b;">Remaining in Escrow</div>
+                <div style="font-size:18px; font-weight:bold; color:#e05c00; font-family:monospace;">₹30,00,000</div>
+              </div>
+            </div>
+
+            <h4 style="margin-bottom:8px; font-size:13px;">Milestone Status &amp; Payout Release:</h4>
+            <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px;">
+              <div style="display:flex; justify-content:space-between; background:#dcfce7; padding:8px 12px; border-radius:4px; font-size:12px;">
+                <span>✓ Milestone 1: 10km Sensor Array Hardware Calibration</span>
+                <span style="font-weight:bold; color:#166534;">₹15,00,000 Released</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; background:#fef3c7; padding:8px 12px; border-radius:4px; font-size:12px;">
+                <span>⏳ Milestone 2: Municipal Leak Simulation &amp; Sub-Meter Accuracy Audit</span>
+                <span style="font-weight:bold; color:#92400e;">₹15,00,000 Pending Release</span>
+              </div>
+              <div style="display:flex; justify-content:space-between; background:#f1f5f9; padding:8px 12px; border-radius:4px; font-size:12px;">
+                <span>🔒 Milestone 3: Full 50km Operational Grid Validation</span>
+                <span style="font-weight:bold; color:#64748b;">₹15,00,000 Locked in Escrow</span>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button class="btn-sm-success" onclick="openModal('modal-escrow')">Release Milestone 2 Escrow Tranche »</button>
+              <button class="btn-sm-primary" onclick="openModal('modal-audit')">Verify Blockchain Audit Trail »</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: SCALE-UP ENGINE -->
+      <div id="tab-scaleup" class="tab-content" style="display:none;">
+        <div class="gem-section-header">
+          <span>🤝 Consortium Bundling &amp; Direct GeM Conversion Engine</span>
+          <button class="btn-sm-primary" onclick="openModal('modal-sanction')">View GeM Sanction Order (GOI-MOHFW-8819)</button>
+        </div>
+
+        <div class="gem-panel" style="background:#fdf6e2; border-color:#fae19c; margin-bottom:16px;">
+          <div class="gem-panel-body" style="font-size:12px; color:#856404;">
+            <strong>GFR Rule 161 Consortium Framework:</strong> DPIIT startups can bundle into consortia to pool turnover and intellectual property, enabling them to meet large tender qualification criteria without being disqualified on turnover limits.
+          </div>
+        </div>
+
+        <div class="gem-panel">
+          <div class="gem-panel-header">Registered Innovation Consortia</div>
+          <div class="gem-table-wrap">
+            <table class="gem-table">
+              <thead>
+                <tr>
+                  <th>Consortium Name</th>
+                  <th>MOU ID</th>
+                  <th>Lead Startup</th>
+                  <th>Target Ministry</th>
+                  <th>Pooled Turnover</th>
+                  <th>Combined Patents</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Bharat Tactical Swarm Systems</strong></td>
+                  <td><code>SAHYOG-MOU-2026-DEF-009</code></td>
+                  <td>Garuda Quantum Aero Dynamics</td>
+                  <td>Ministry of Defence</td>
+                  <td style="color:#116530; font-family:monospace; font-weight:bold;">₹3.25 Cr</td>
+                  <td>7 Patents</td>
+                  <td><span class="badge badge-active">Bid Submitted</span></td>
+                </tr>
+                <tr>
+                  <td><strong>JalNet CleanTech Innovations</strong></td>
+                  <td><code>SAHYOG-MOU-2026-MOHUA-034</code></td>
+                  <td>AquaPulse Sensing Technologies</td>
+                  <td>Ministry of Housing &amp; Urban Affairs</td>
+                  <td style="color:#116530; font-family:monospace; font-weight:bold;">₹2.80 Cr</td>
+                  <td>5 Patents</td>
+                  <td><span class="badge badge-pilot">MOU Validated</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: PILOT CHALLENGES -->
+      <div id="tab-challenges" class="tab-content" style="display:none;">
+        <div class="gem-section-header">
+          <span>📋 National Pilot Challenges Registry</span>
+          <button class="btn-sm-success" onclick="openModal('modal-new-challenge')">+ Post New Department Challenge</button>
+        </div>
+        <div id="all-challenges-grid">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- MODALS -->
+
+  <!-- Modal 1: Post New Challenge -->
+  <div class="modal-overlay" id="modal-new-challenge">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title">Post New Ministry Pilot Challenge</span>
+        <button class="modal-close" onclick="closeModal('modal-new-challenge')">&times;</button>
+      </div>
+      <form onsubmit="handleCreateChallenge(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Problem Statement Title *</label>
+            <input type="text" id="new-ch-title" class="form-input" placeholder="e.g. AI Flood Prediction Sensor Grid" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Procuring Ministry / Department *</label>
+            <input type="text" id="new-ch-dept" class="form-input" placeholder="e.g. Ministry of Jal Shakti" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Escrow Protected Budget (INR) *</label>
+            <input type="number" id="new-ch-budget" class="form-input" placeholder="e.g. 5000000" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Problem Description &amp; Sandbox KPIs *</label>
+            <textarea id="new-ch-desc" class="form-textarea" rows="3" placeholder="Describe the problem, target sandbox trials, and accuracy benchmarks..." required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-hero-outline" style="color:#333; border-color:#ccc;" onclick="closeModal('modal-new-challenge')">Cancel</button>
+          <button type="submit" class="btn-sm-success">Publish Challenge »</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: DPIIT Auto-KYC -->
+  <div class="modal-overlay" id="modal-kyc">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title">DPIIT Auto-KYC Instant Verification</span>
+        <button class="modal-close" onclick="closeModal('modal-kyc')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="margin-bottom:12px; color:#64748b;">Direct API handshake with Ministry of Corporate Affairs (MCA21) &amp; DPIIT Startup India database to prevent shell entities.</p>
+        <div class="form-group">
+          <label class="form-label">Corporate Identification Number (CIN)</label>
+          <input type="text" id="kyc-cin" class="form-input" value="U72900KA2022PTC159041">
+        </div>
+        <div class="form-group">
+          <label class="form-label">DPIIT Recognition Number</label>
+          <input type="text" id="kyc-dpiit" class="form-input" value="DIPP-IND-2022-44192">
+        </div>
+        <div id="kyc-result" style="display:none; background:#dcfce7; border:1px solid #bbf7d0; padding:10px; border-radius:4px; margin-top:10px;">
+          <strong style="color:#166534;">✓ Identity Verified:</strong> AquaPulse Sensing Technologies Pvt Ltd<br>
+          <span style="font-size:11px; color:#15803d;">Active GSTIN: 29AABCA1234F1Z5 · MCA Status: Active · Shell Risk: 0%</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-hero-outline" style="color:#333; border-color:#ccc;" onclick="closeModal('modal-kyc')">Close</button>
+        <button class="btn-sm-primary" onclick="runKycCheck()">Run MCA Verification</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Escrow Ledger -->
+  <div class="modal-overlay" id="modal-escrow">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title">Smart Escrow Payout Console (Sahyog / GeM)</span>
+        <button class="modal-close" onclick="closeModal('modal-escrow')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="background:#eff6ff; padding:10px; border-radius:4px; margin-bottom:12px; font-size:11px; color:#1e40af;">
+          Statutory Tripartite Escrow Trust Account (RBI Regulated) · Automated RTGS Tranche Disbursement.
+        </div>
+        <table class="gem-table">
+          <tr><th>Pilot Agreement:</th><td><code>SAHYOG-MOHUA-SBX-2026-081</code></td></tr>
+          <tr><th>Beneficiary:</th><td>AquaPulse Sensing Technologies Pvt Ltd</td></tr>
+          <tr><th>Tranche To Release:</th><td><strong>Milestone 2 (₹15,00,000)</strong></td></tr>
+          <tr><th>Audit Status:</th><td><span class="badge badge-active">Passed AIIMS / Municipal Panel</span></td></tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-hero-outline" style="color:#333; border-color:#ccc;" onclick="closeModal('modal-escrow')">Cancel</button>
+        <button class="btn-sm-success" onclick="releaseEscrowMilestone()">Confirm &amp; Disburse RTGS Tranche</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Blockchain Audit Trail -->
+  <div class="modal-overlay" id="modal-audit">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title">Immutable Hyperledger Fabric Audit Trail</span>
+        <button class="modal-close" onclick="closeModal('modal-audit')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <table class="gem-table">
+          <tr><th>Block Height:</th><td>#1,489,204</td></tr>
+          <tr><th>Block Hash:</th><td><code style="font-size:10px; word-break:break-all;">0x7b819f0412de49a1803cb9a941efd488102a99cbf0192e448b1aa9384fc019e2</code></td></tr>
+          <tr><th>Merkle Root:</th><td><code style="font-size:10px; word-break:break-all;">0x9924fac10839de8174bc1094ae318f7001cae841920bdcae8194017329fbca10</code></td></tr>
+          <tr><th>Smart Contract:</th><td><code>0xSahyogEscrowCoreV2_MOHUA_081</code></td></tr>
+          <tr><th>Consensus:</th><td>Practical Byzantine Fault Tolerance (PBFT)</td></tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-sm-primary" onclick="closeModal('modal-audit')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 5: GeM Sanction Order -->
+  <div class="modal-overlay" id="modal-sanction">
+    <div class="modal-card">
+      <div class="modal-header" style="background:#116530;">
+        <span class="modal-title">Official GeM Direct Sanction Order</span>
+        <button class="modal-close" onclick="closeModal('modal-sanction')">&times;</button>
+      </div>
+      <div class="modal-body" style="font-family:serif;">
+        <div style="text-align:center; border-bottom:2px solid #333; padding-bottom:10px; margin-bottom:12px;">
+          <h2 style="font-size:16px;">GOVERNMENT OF INDIA</h2>
+          <h4 style="font-size:12px;">GOVERNMENT e-MARKETPLACE (GeM)</h4>
+          <p style="font-size:10px; color:#666;">Sanction Order Number: <strong>GOI-MOHFW-8819-2026</strong></p>
+        </div>
+        <p style="font-size:12px; line-height:1.6; margin-bottom:8px;">
+          In exercise of powers conferred under <strong>General Financial Rules (GFR) 2017 Rule 149(viii)</strong>, sanction is hereby accorded for direct procurement conversion following successful completion of Sandbox Pilot <code>SAHYOG-MOHFW-SBX-2025-019</code> without requirement for L1 re-tendering.
+        </p>
+        <table class="gem-table" style="font-family:sans-serif; margin-top:10px;">
+          <tr><th>Contractor:</th><td>Nidaan BioAI Health Systems Pvt Ltd</td></tr>
+          <tr><th>Item Description:</th><td>500 Units Portable AI Cancer Screening Devices</td></tr>
+          <tr><th>Total Sanction Value:</th><td><strong>₹2,40,00,000 (Two Crore Forty Lakhs Only)</strong></td></tr>
+          <tr><th>Competent Authority:</th><td>Joint Secretary &amp; Procurement Commissioner, MoHFW</td></tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-sm-primary" onclick="window.print()">🖨 Print Sanction Order</button>
+        <button class="btn-hero-outline" style="color:#333; border-color:#ccc;" onclick="closeModal('modal-sanction')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Official GoI Footer -->
+  <footer class="main-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-col-title" style="font-size:14px; font-family:Georgia, serif;">SAHYOG</div>
+        <p style="font-size:11px; line-height:1.7;">
+          National Public Innovation Procurement &amp; Sandbox Portal · DPIIT, Ministry of Commerce &amp; Industry, Government of India.
+        </p>
+        <div style="margin-top:10px; display:inline-block; background:rgba(255,255,255,0.06); padding:4px 8px; border-radius:3px; font-size:10px;">
+          🔒 GFR 149(viii) &amp; 161 Compliant
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Statutory Framework</div>
+        <ul class="footer-list">
+          <li>▸ GFR 2017 Rule 149(viii)</li>
+          <li>▸ GFR Rule 161 (Consortium Bundling)</li>
+          <li>▸ Public Procurement Policy for MSEs 2012</li>
+          <li>▸ DoE OM F.1/26/2018-PPD</li>
+          <li>▸ CVC Vigilance Guidelines — Blind Review</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Portal Modules</div>
+        <ul class="footer-list">
+          <li><a onclick="setTab('department')" style="cursor:pointer;">▸ Govt Dashboard &amp; VfM Scoring</a></li>
+          <li><a onclick="setTab('startup')" style="cursor:pointer;">▸ Startup Sandbox &amp; Escrow</a></li>
+          <li><a onclick="setTab('scaleup')" style="cursor:pointer;">▸ Consortium Bundling Engine</a></li>
+          <li><a onclick="setTab('challenges')" style="cursor:pointer;">▸ Pilot Challenges Registry</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Official Portals</div>
+        <ul class="footer-list">
+          <li><a href="https://gem.gov.in/" target="_blank">↗ gem.gov.in</a></li>
+          <li><a href="https://startupindia.gov.in/" target="_blank">↗ startupindia.gov.in</a></li>
+          <li><a href="https://india.gov.in/" target="_blank">↗ india.gov.in</a></li>
+          <li><a href="https://makeinindia.com/" target="_blank">↗ makeinindia.com</a></li>
+          <li><a href="https://digitalindia.gov.in/" target="_blank">↗ digitalindia.gov.in</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© 2026 Government of India | Ministry of Commerce &amp; Industry | DPIIT | Sahyog</span>
+        <span>Hosted on NIC Cloud · CERT-In SSL · GIGW 3.0 Accessibility Compliant</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

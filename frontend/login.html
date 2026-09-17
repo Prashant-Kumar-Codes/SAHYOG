@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Sahyog National Innovation Procurement</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .auth-box {
+      max-width: 440px;
+      margin: 40px auto;
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-medium);
+      overflow: hidden;
+    }
+    .auth-header {
+      background: var(--navy-dark);
+      color: white;
+      padding: 24px;
+      text-align: center;
+      border-bottom: 4px solid var(--amber);
+    }
+    .auth-body {
+      padding: 24px;
+    }
+  </style>
+</head>
+<body style="background:#eef2f6;">
+
+  <div class="tricolor-strip">
+    <div class="orange"></div>
+    <div class="white"></div>
+    <div class="green"></div>
+  </div>
+
+  <div class="container">
+    <div class="auth-box">
+      <div class="auth-header">
+        <a href="index.html" style="text-decoration:none;">
+          <div class="emblem-circle" style="margin:0 auto 10px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6">
+              <circle cx="12" cy="12" r="9"/>
+              <circle cx="12" cy="12" r="2"/>
+              <path d="M12 3v6M12 15v6M3 12h6M15 12h6"/>
+            </svg>
+          </div>
+          <div class="logo-title" style="font-size:22px;">SAH<span>YOG</span></div>
+        </a>
+        <div style="font-size:12px; color:#aecde8; margin-top:4px;">National Public Innovation Procurement Authentication</div>
+      </div>
+
+      <div class="auth-body">
+        <div style="display:flex; border-bottom:1px solid #cbd5e1; margin-bottom:18px;">
+          <button id="tab-btn-startup" class="btn-sm-primary" style="flex:1; border-radius:0; padding:10px; background:#1a7abf; color:white; border:none; cursor:pointer;" onclick="switchAuthRole('startup')">
+            🚀 DPIIT Startup
+          </button>
+          <button id="tab-btn-dept" style="flex:1; border-radius:0; padding:10px; background:#f1f5f9; color:#64748b; border:none; cursor:pointer;" onclick="switchAuthRole('dept')">
+            🏛 Govt Officer
+          </button>
+        </div>
+
+        <form onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label class="form-label" id="auth-id-label">DPIIT Recognition Number</label>
+            <input type="text" id="auth-id-input" class="form-input" value="DIPP-IND-2022-44192" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password / Security Key</label>
+            <input type="password" class="form-input" value="••••••••••••" required>
+          </div>
+          <button type="submit" class="btn-sm-primary" style="width:100%; padding:10px; font-size:13px; margin-top:8px;">
+            Sign In to Sahyog Portal »
+          </button>
+        </form>
+
+        <div style="margin-top:20px; text-align:center; font-size:11px; color:#64748b;">
+          Don't have an account? <a href="signup.html" style="color:var(--primary); font-weight:bold;">Register Here &rarr;</a><br><br>
+          <a href="index.html" style="color:#64748b;">&larr; Back to Portal Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchAuthRole(role) {
+      const sBtn = document.getElementById('tab-btn-startup');
+      const dBtn = document.getElementById('tab-btn-dept');
+      const label = document.getElementById('auth-id-label');
+      const inp = document.getElementById('auth-id-input');
+      if (role === 'startup') {
+        sBtn.style.background = '#1a7abf'; sBtn.style.color = 'white';
+        dBtn.style.background = '#f1f5f9'; dBtn.style.color = '#64748b';
+        label.textContent = 'DPIIT Recognition Number';
+        inp.value = 'DIPP-IND-2022-44192';
+      } else {
+        dBtn.style.background = '#1a5276'; dBtn.style.color = 'white';
+        sBtn.style.background = '#f1f5f9'; sBtn.style.color = '#64748b';
+        label.textContent = 'Official Govt Email (@nic.in / @gov.in)';
+        inp.value = 'officer.procurement@mohua.gov.in';
+      }
+    }
+    function handleLogin(e) {
+      e.preventDefault();
+      alert('Authentication successful! Redirecting to Sahyog Portal...');
+      window.location.href = 'index.html';
+    }
+  </script>
+</body>
+</html>
